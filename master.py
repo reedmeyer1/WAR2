@@ -12,7 +12,8 @@ imgfile = open('imgpoints.pkl', 'rb')
 imgpoints = pickle.load(imgfile)
 imgfile.close()
 
-Calibrate(objpoints, imgpoints, (2122,3226), 'images/blue_scan_300.jpg')
+#Calibrate image before measurement
+Calibrate(objpoints, imgpoints, (2122, 3226), 'images/blue_scan_300.jpg')
 
-measurement('images/default.png')
+measurement('images/proper_env.png')
 

@@ -3,7 +3,7 @@ import cv2
 import glob
 import pickle
 
-def Main(inputImage, directory):
+def Global(inputImage, directory):
     #initialize corner count and photo size
     chessboardSize = (24,17)
     frameSize = (1440,1080)
@@ -53,6 +53,8 @@ def Calibrate(objpoints, imgpoints, frameSize, inputImage):
     Distortion(cameraMatrix, dist, inputImage)
     Error(objpoints, rvecs, tvecs, cameraMatrix, dist, imgpoints)
 
+
+#  Potentially use this instead of calibrate!!!!!!!!!!!!
 def Distortion(cameraMatrix, dist, inputImage):
     #read in pre-corrected image
     img = cv2.imread(inputImage)
@@ -65,13 +67,21 @@ def Distortion(cameraMatrix, dist, inputImage):
     x, y, w, h = roi
     dst = dst[y:y+h, x:x+w]
     cv2.imwrite('images/default.png', dst)
-    #remapping technique for distortion correction
-    mapx, mapy = cv2.initUndistortRectifyMap(cameraMatrix, dist, None, newCameraMatrix, (w,h), 5)
-    dst = cv2.remap(img, mapx, mapy, cv2.INTER_LINEAR)
-    #crops image and writes to file
-    x, y, w, h = roi
-    dst = dst[y:y+h, x:x+w]
-    cv2.imwrite('images/secondary.png', dst)
+
+
+
+    
+##    #remapping technique for distortion correction
+##    mapx, mapy = cv2.initUndistortRectifyMap(cameraMatrix, dist, None, newCameraMatrix, (w,h), 5)
+##    dst = cv2.remap(img, mapx, mapy, cv2.INTER_LINEAR)
+##    #crops image and writes to file
+##    x, y, w, h = roi
+##    dst = dst[y:y+h, x:x+w]
+##    cv2.imwrite('images/secondary.png', dst)
+
+
+
+
 
 def Error(objpoints, rvecs, tvecs, cameraMatrix, dist, imgpoints):
     #calculates error for program

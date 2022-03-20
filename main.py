@@ -125,10 +125,10 @@ def measurement(inputImage):
 
 
     # show results
-    #cv2.namedWindow('Image', cv2.WINDOW_NORMAL)
-    #cv2.resizeWindow('Image', 1080,1920)
-    #cv2.imshow("Image", img)
-    #cv2.waitKey(0)
+    cv2.namedWindow('Image', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('Image', 1080,1920)
+    cv2.imshow("Image", img)
+    cv2.waitKey(0)
 
 
 
